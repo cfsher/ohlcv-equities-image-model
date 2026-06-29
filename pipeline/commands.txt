@@ -1,0 +1,24 @@
+start
+
+    python prepare_daily_data_chunked.py --output-dir /ephemeral/data/shards_4 --input-dir ../55_percent
+
+stop
+
+start
+
+    python combine_daily_shards.py \
+    --manifest /ephemeral/data/shards_4/stock_dataset_manifest.json \
+    --output-path /ephemeral/data/55_percent.npz
+
+stop
+
+start
+
+    python build_decomp_ohlc_images_single_npz.py \
+    --input-npz /ephemeral/data/55_percent_decomp.npz \
+    --output-dir /ephemeral/images/55_percent \
+    --max-samples 40000000 \
+    --chunk-size 32768 \
+    --enable-weekend-feature --include-volume  --include-moving-average --overwrite
+
+stop

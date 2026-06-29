@@ -1,0 +1,251 @@
+{
+  "created_utc": "2026-03-14T04:38:48.351669+00:00",
+  "config": {
+    "data_dir": "/ephemeral/images/imgay3",
+    "output_dir": "runs/85",
+    "epochs": 100,
+    "patience": 3,
+    "learning_rate": 3e-05,
+    "weight_decay": 0.0,
+    "elastic_net_l1": 3e-09,
+    "elastic_net_l2": 3e-07,
+    "batch_size": 256,
+    "fc_dropout": 0.5,
+    "readout_dim": 16,
+    "head_dims": [
+      2048,
+      512,
+      128
+    ],
+    "seed": 7,
+    "amp_enabled": true,
+    "device": "auto",
+    "distributed": false,
+    "ret_atr_threshold": 0.0,
+    "val_fraction": 0.18,
+    "test_fraction": 0.001,
+    "overfit_sanity": false,
+    "overfit_sample_start": 0,
+    "overfit_sample_size": 3000000,
+    "overfit_val_sample_start": 5089000,
+    "overfit_val_sample_size": 400000,
+    "multi_gpu": false,
+    "torch_compile": false,
+    "class_weighted_ce_enabled": false,
+    "vix_daily_csv": "/home/ubuntu/model/daily_vix.csv",
+    "vix_date_col": "date",
+    "vix_value_col": "close",
+    "vix_fusion_mode": "none",
+    "vix_embed_dim": 8,
+    "vix_norm_method": "robust_zscore",
+    "vix_norm_clip": 5.0,
+    "vix_log1p": false,
+    "walkforward_min_per_side_mode": "either",
+    "shuffle_train_labels": false,
+    "zero_image": false
+  },
+  "runtime": {
+    "distributed": 0,
+    "rank": 0,
+    "world_size": 1,
+    "local_rank": 0,
+    "resolved_device": "cuda",
+    "cuda_device_count": 2,
+    "keras_train_progress_enabled": 1,
+    "keras_val_progress_enabled": 1,
+    "epoch_stage_timing_logging_enabled": 1,
+    "preds_export_amp_enabled": 0
+  },
+  "data": {
+    "data_dir": "/ephemeral/images/imgay3",
+    "subset_count": 1267722,
+    "scales": 3,
+    "height": 32,
+    "width": 18,
+    "width_per_scale": [
+      18,
+      15,
+      15
+    ],
+    "jagged_image_widths_enabled": 1,
+    "ret_atr_index": 3,
+    "ret_pct_index": 6,
+    "label_column_for_classification": "ret_pct",
+    "label_threshold_for_classification": 0.0,
+    "vix_enabled": 0,
+    "vix_image_enabled": 0,
+    "vix_image_height": 96,
+    "vix_image_width": 180,
+    "vix_image_bars": 60,
+    "vix_daily_csv": "/home/ubuntu/model/daily_vix.csv",
+    "vix_date_col": "date",
+    "vix_value_col": "close",
+    "vix_beta_scaling_enabled": 0,
+    "vix_beta_ticker_csv_dir": "/home/ubuntu/model/tickers",
+    "vix_beta_ticker_date_col": "date",
+    "vix_beta_ticker_beta_col": "beta",
+    "vix_beta_clip_low": -Infinity,
+    "vix_beta_clip_high": Infinity,
+    "vix_beta_clip_symbol_count": 0,
+    "ticker_lookup_count": 3359,
+    "vix_norm_train_split": null,
+    "train_class0_count": 567460,
+    "train_class1_count": 470804,
+    "train_class_weights_for_50_50_ce": null,
+    "train_mixed_shard_batching_enabled_constant": 1,
+    "train_mixed_shard_active_shards_constant": 16,
+    "dual_seq_feature_count": 0,
+    "dual_seq_lookback": 0,
+    "dual_sample_count": 0,
+    "dropped_image_samples_for_seq": 0,
+    "seq_feature_standardization_train_split": null,
+    "seq_target_clip_train_split": null
+  },
+  "splits": {
+    "train": [
+      0,
+      1038264
+    ],
+    "val": [
+      1038264,
+      1266454
+    ],
+    "test": [
+      1266454,
+      1267722
+    ]
+  },
+  "estimates": {
+    "per_epoch_time_alone": {
+      "enabled": true,
+      "train_samples": 1038264,
+      "val_samples": 228190,
+      "train_sps_assumed": 5600.0,
+      "val_sps_assumed": 14000.0,
+      "fixed_overhead_sec_assumed": 8.0,
+      "train_sec_est": 185.40428571428572,
+      "val_sec_est": 16.299285714285713,
+      "total_sec_est": 209.70357142857142,
+      "total_min_est": 3.4950595238095237
+    }
+  },
+  "evaluation": {
+    "post_run_evals_enabled_constant": 1,
+    "daily_cross_sectional": {
+      "top_pct": 0.01,
+      "bottom_pct": 0.01,
+      "min_per_side": 1,
+      "min_names_per_day": 2,
+      "annualization_days": 252.0,
+      "outlier_zscore_threshold": 6.0
+    },
+    "walkforward_rolling_threshold": {
+      "enabled": 1,
+      "top_pct": 0.01,
+      "bottom_pct": 0.01,
+      "lookback_days": 45,
+      "min_history_days": 20,
+      "min_per_side": 1,
+      "min_per_side_mode": "either",
+      "min_names_per_day": 2,
+      "annualization_days": 252.0,
+      "threshold_method": "pooled",
+      "fallback_to_daily_rank": 0,
+      "enforce_non_overlap": 1,
+      "spy_non_overlap_enabled": 1,
+      "spy_non_overlap_horizon_days": 5,
+      "spy_daily_csv": "/home/ubuntu/model/tickers/SPY.csv",
+      "spy_date_col": "date",
+      "spy_close_col": "close",
+      "outlier_zscore_threshold": 6.0
+    }
+  },
+  "model": {
+    "conv_channels": [
+      64,
+      128,
+      256
+    ],
+    "pool_dim": "height",
+    "pool_kernel": 2,
+    "pool_stride": 2,
+    "weight_init": "xavier_uniform",
+    "xavier_gain": 1.4124491030928974,
+    "elastic_net_l1": 3e-09,
+    "elastic_net_l2": 3e-07,
+    "fc_dropout": 0.5,
+    "readout_dim": 16,
+    "head_dims": [
+      2048,
+      512,
+      128
+    ],
+    "vix_fusion_mode": "none",
+    "vix_embed_dim": 8,
+    "include_vix_image": 0,
+    "vix_image_height": 96,
+    "vix_image_width": 180,
+    "vix_image_conv_channels": [
+      64,
+      128,
+      128
+    ],
+    "vix_image_pool_kernels": [
+      3,
+      2,
+      2
+    ],
+    "input_width_per_scale": [
+      18,
+      15,
+      15
+    ],
+    "fusion_mode": "option1_pad_to_max_width",
+    "jagged_2d_concat_option": 1,
+    "jagged_option3_target_width": 15,
+    "jagged_option4_add_valid_width_mask": 0,
+    "rep_shape": [
+      256,
+      8,
+      18
+    ],
+    "rep_aligned_width": 18,
+    "branch_mode": "decomp",
+    "dual_regression_mse_weight": 0.0,
+    "dual_reg_fusion_mode": "",
+    "dual_msf_map_shape": [],
+    "dual_reg_fused_map_shape": [],
+    "dual_seq_input_features": 0,
+    "dual_seq_input_lookback": 0,
+    "dual_ts_crop_keep_side": "",
+    "param_count_total": 2603538,
+    "param_count_trainable": 2603538,
+    "param_count_frozen": 0,
+    "msf_weights": [
+      0.5,
+      0.25,
+      0.25
+    ],
+    "msf_out_channels": [
+      128,
+      64,
+      64
+    ],
+    "msf_active_scale_indices": [
+      0,
+      1,
+      2
+    ],
+    "msf_active_scale_weights": [
+      0.5,
+      0.25,
+      0.25
+    ],
+    "msf_disabled_scale_indices": [],
+    "multi_gpu_enabled": 0,
+    "multi_gpu_device_ids": [
+      0,
+      1
+    ]
+  }
+}
